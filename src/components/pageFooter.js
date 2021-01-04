@@ -17,10 +17,11 @@ import {
 const PageFooter = () => (
   <Box
     width="100%"
-    backgroundColor="blackAlpha.500"
+    backgroundColor="gray.700"
     minHeight="300px"
     pt="4rem"
     pb="4rem"
+    color="gray.300"
   >
     <Grid
       templateColumns="repeat(2, 1fr)"
@@ -30,30 +31,28 @@ const PageFooter = () => (
       mr="auto"
     >
       <Flex flexDirection="column">
-        <Heading as="h2" size="lg">
+        <Heading as="h2" size="lg" color="gray.100">
           Contáctanos
         </Heading>
         <FormControl>
-          <FormLabel>Nombre</FormLabel>
-          <Input backgroundColor="whiteAlpha.900" />
+          <Input variant="flushed" placeholder="Nombre" />
           <FormErrorMessage>Error message</FormErrorMessage>
         </FormControl>
-        <FormControl>
-          <FormLabel>Email</FormLabel>
-          <Input backgroundColor="whiteAlpha.900" />
+        <FormControl mb="1rem">
+          <Input variant="flushed" placeholder="Email" />
           <FormErrorMessage>Error message</FormErrorMessage>
         </FormControl>
         <FormControl>
           <FormLabel>Mensaje</FormLabel>
           <FormErrorMessage>Error message</FormErrorMessage>
-          <Textarea backgroundColor="whiteAlpha.900" />
+          <Textarea backgroundColor="whiteAlpha.300" color="gray.100" />
         </FormControl>
-        <Button variant="solid" size="md" width="fit-content" ml="auto">
+        <Button variant="gosh" size="md" width="fit-content" ml="auto">
           Enviar
         </Button>
       </Flex>
       <Flex flexDirection="column">
-        <Heading size="lg">¿Dónde estamos?</Heading>
+        <Heading size="lg" color="gray.100">¿Dónde estamos?</Heading>
         <Flex flexDirection="column" mt="1rem">
           <Text pb=".5rem">Calle San Clemente, 8.</Text>
           <Text pb=".5rem">Santa Cruz de Tenerife</Text>

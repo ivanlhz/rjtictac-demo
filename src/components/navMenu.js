@@ -17,14 +17,14 @@ const NavMenu = () => (
     position="fixed"
   >
     <Flex alignItems="stretch" p="1rem">
-      <Text mr="1rem" color="gray.300">
-        CONTACTO
+      <Text mr="1rem" color="gray.300" _hover={{ color: "orange.400" }}>
+        <Link to="/taller">TALLER</Link>
       </Text>
-      <Text mr="1rem" color="gray.300">
-        TALLER
+      <Text mr="1rem" color="gray.300" _hover={{ color: "orange.500" }}>
+        <Link to="/">BLOG</Link>
       </Text>
-      <Text color="gray.300">
-        <Link to="/blog">BLOG</Link>
+      <Text color="gray.300" _hover={{ color: "orange.300" }}>
+        <Link to="/contact">CONTACTO</Link>
       </Text>
     </Flex>
   </Flex>
