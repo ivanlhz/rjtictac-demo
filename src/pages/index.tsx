@@ -42,7 +42,7 @@ const App = () => {
           flexDirection="column"
           height="100vh"
           m={0}
-          p={0}
+          p="2rem"
         >
           <NavMenu />
           <Box
@@ -51,7 +51,7 @@ const App = () => {
             justifyContent="center"
             alignItems="space-between"
             height="100%"
-            maxWidth="700px"
+            maxW="700px"
           >
             <Img fluid={images.logo.childImageSharp.fluid} alt="rjtictac logo" />
             <Text color="whiteAlpha.900" fontSize="2xl" textAlign="center" mt="2rem">

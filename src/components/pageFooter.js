@@ -24,28 +24,30 @@ const PageFooter = () => (
     color="gray.300"
   >
     <Grid
-      templateColumns="repeat(2, 1fr)"
+      templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
       gap={20}
-      maxWidth="700px"
+      maxW={{base:"300px", md:"700px"}}
       ml="auto"
       mr="auto"
+      gridAutoFlow="row dense"
+      p={{base: "2rem", md: "0"}}
     >
       <Flex flexDirection="column">
         <Heading as="h2" size="lg" color="gray.100">
           Contáctanos
         </Heading>
         <FormControl>
-          <Input variant="flushed" placeholder="Nombre" />
+          <Input isRequired variant="flushed" placeholder="Nombre" />
           <FormErrorMessage>Error message</FormErrorMessage>
         </FormControl>
         <FormControl mb="1rem">
-          <Input variant="flushed" placeholder="Email" />
+          <Input isRequired variant="flushed" placeholder="Email" />
           <FormErrorMessage>Error message</FormErrorMessage>
         </FormControl>
         <FormControl>
           <FormLabel>Mensaje</FormLabel>
           <FormErrorMessage>Error message</FormErrorMessage>
-          <Textarea backgroundColor="whiteAlpha.300" color="gray.100" />
+          <Textarea isRequired backgroundColor="whiteAlpha.300" color="gray.100" />
         </FormControl>
         <Button variant="gosh" size="md" width="fit-content" ml="auto">
           Enviar
