@@ -7,6 +7,7 @@ import Img from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image'
 
 const App = () => {
+  const contactRef = React.useRef(null)
   const images = useStaticQuery(
     graphql`
       query {
@@ -27,7 +28,9 @@ const App = () => {
       }
     `
   )
-
+  function scrollTo(myRef) {
+    myRef.current.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <>
@@ -42,9 +45,9 @@ const App = () => {
           flexDirection="column"
           height="100vh"
           m={0}
-          p="2rem"
+          p="0 2rem"
         >
-          <NavMenu />
+          <NavMenu onContactClick={() => scrollTo(contactRef)} />
           <Box
             display="flex"
             flexDirection="column"
@@ -62,7 +65,8 @@ const App = () => {
           </Box>
         </Flex>
       </ BackgroundImage>
-      <PageFooter />
+      <div ref={contactRef} />
+      <PageFooter  />
     </>
   )
 }
