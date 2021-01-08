@@ -37,26 +37,52 @@ const PageFooter = () => (
         <Heading as="h2" size="lg" color="gray.100">
           Contáctanos
         </Heading>
-        <FormControl>
-          <Input isRequired variant="flushed" placeholder="Nombre" />
-          <FormErrorMessage>Error message</FormErrorMessage>
-        </FormControl>
-        <FormControl mb="1rem">
-          <Input isRequired variant="flushed" placeholder="Email" />
-          <FormErrorMessage>Error message</FormErrorMessage>
-        </FormControl>
-        <FormControl>
-          <FormLabel>Mensaje</FormLabel>
-          <FormErrorMessage>Error message</FormErrorMessage>
-          <Textarea
-            isRequired
-            backgroundColor="whiteAlpha.300"
-            color="gray.100"
-          />
-        </FormControl>
-        <Button variant="gosh" size="md" width="fit-content" ml="auto">
-          Enviar
-        </Button>
+        <form
+          name="rjtictac-contact"
+          method="post"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="rjtictac-contact" />
+          <FormControl>
+            <Input
+              name="name"
+              isRequired
+              variant="flushed"
+              placeholder="Nombre"
+            />
+            <FormErrorMessage>Error message</FormErrorMessage>
+          </FormControl>
+          <FormControl mb="1rem">
+            <Input
+              name="email"
+              isRequired
+              variant="flushed"
+              placeholder="Email"
+              type="email"
+            />
+            <FormErrorMessage>Error message</FormErrorMessage>
+          </FormControl>
+          <FormControl>
+            <FormLabel>Mensaje</FormLabel>
+            <FormErrorMessage>Error message</FormErrorMessage>
+            <Textarea
+              name="message"
+              isRequired
+              backgroundColor="whiteAlpha.300"
+              color="gray.100"
+            />
+          </FormControl>
+          <Button
+            variant="gosh"
+            size="md"
+            width="fit-content"
+            ml="auto"
+            type="submit"
+          >
+            Enviar
+          </Button>
+        </form>
       </Flex>
       <Flex flexDirection="column">
         <Heading size="lg" color="gray.100">
