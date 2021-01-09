@@ -8,7 +8,8 @@ import {
   FormLabel,
   Textarea,
   Flex,
-  VisuallyHidden
+  VisuallyHidden,
+  Box
 } from "@chakra-ui/react"
 
 const ContactForm = () => {
@@ -20,8 +21,8 @@ const ContactForm = () => {
       <form
         name="rjtictac-contact"
         method="post"
-        data-netlify="true"
         data-netlify-recaptcha="true"
+        data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
         <VisuallyHidden>
@@ -29,7 +30,6 @@ const ContactForm = () => {
             Don’t fill this out if you’re human: <input name="bot-field" />
           </label>
         </VisuallyHidden>
-        <input type="hidden" name="form-name" value="rjtictac-contact" />
         <FormControl>
           <Input
             name="name"
@@ -60,7 +60,7 @@ const ContactForm = () => {
             minLength="50"
           />
         </FormControl>
-        <div data-netlify-recaptcha="true"></div>
+        <Box data-netlify-recaptcha="true"></Box>
         <Flex>
           <Button
             variant="gosh"
@@ -74,7 +74,6 @@ const ContactForm = () => {
           </Button>
         </Flex>
       </form>
-      
     </>
   )
 }
