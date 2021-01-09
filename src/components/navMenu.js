@@ -18,10 +18,10 @@ const NavMenu = ({ onContactClick }) => {
       position="fixed"
     >
       <Flex alignItems="stretch" p="1rem">
-        <Text mr="1rem" color="gray.300" _hover={{ color: "orange.400" }}>
+        <Text mr="1rem" color="gray.300" _hover={{ color: "orange.300" }}>
           <Link to="/taller">TALLER</Link>
         </Text>
-        <Text mr="1rem" color="gray.300" _hover={{ color: "orange.500" }}>
+        <Text mr="1rem" color="gray.300" _hover={{ color: "orange.300" }}>
           <Link to="/blog">BLOG</Link>
         </Text>
         <Text color="gray.300" _hover={{ color: "orange.300" }}>
