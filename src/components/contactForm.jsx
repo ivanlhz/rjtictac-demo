@@ -60,6 +60,7 @@ const ContactForm = () => {
             minLength="50"
           />
         </FormControl>
+        <div data-netlify-recaptcha="true"></div>
         <Flex>
           <Button
             variant="gosh"
@@ -73,6 +74,7 @@ const ContactForm = () => {
           </Button>
         </Flex>
       </form>
+      
     </>
   )
 }
