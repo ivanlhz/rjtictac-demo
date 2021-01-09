@@ -25,6 +25,7 @@ const ContactForm = () => {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
+        <input type="hidden" name="form-name" value="rjtictac-contact" />
         <VisuallyHidden>
           <label>
             Don’t fill this out if you’re human: <input name="bot-field" />
