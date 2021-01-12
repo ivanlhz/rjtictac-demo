@@ -21,7 +21,6 @@ const ContactForm = () => {
       <form
         name="rjtictac-contact"
         method="post"
-        data-netlify-recaptcha="true"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
@@ -61,7 +60,6 @@ const ContactForm = () => {
             minLength="50"
           />
         </FormControl>
-        <Box data-netlify-recaptcha="true"></Box>
         <Flex>
           <Button
             variant="gosh"

@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Rjtictac`,
@@ -83,6 +87,13 @@ module.exports = {
          * if false, this plugin will not use <ColorModeProvider />
          */
         isUsingColorMode: true,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: 'y155stxxiia8',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
   ],
