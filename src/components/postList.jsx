@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Button, Image, Heading, Text, Grid } from "@chakra-ui/react"
+import { Flex, Button, Heading, Text, Grid } from "@chakra-ui/react"
 import { StaticQuery, graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 
@@ -36,7 +36,11 @@ const PostList = () => {
                     key={id}
                     padding="2rem"
                   >
-                    <Heading mt="200px" color="orange.500" fontSize="1.5rem">
+                    <Heading
+                      mt={{ base: "auto", md: "200px" }}
+                      color="orange.500"
+                      fontSize="1.5rem"
+                    >
                       {title}
                     </Heading>
                     <Text>{descripcionCorta}</Text>
