@@ -1,6 +1,5 @@
 import React from "react"
 import { Flex, Text } from "@chakra-ui/react"
-import { Link } from "gatsby"
 
 const NavMenu = ({ onContactClick, onBlogClick }) => {
   return (
@@ -18,9 +17,6 @@ const NavMenu = ({ onContactClick, onBlogClick }) => {
       position="fixed"
     >
       <Flex alignItems="stretch" p="1rem">
-        <Text mr="1rem" color="gray.300" _hover={{ color: "orange.300" }}>
-          <Link to="/taller">TALLER</Link>
-        </Text>
         <Text mr="1rem" color="gray.300" _hover={{ color: "orange.300" }}>
           <button onClick={onBlogClick}>ARTÍCULOS</button>
         </Text>
