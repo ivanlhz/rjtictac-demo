@@ -1,6 +1,7 @@
 import React from "react"
 import { Flex, Button, Image, Heading, Text, Grid } from "@chakra-ui/react"
 import { StaticQuery, graphql } from "gatsby"
+import BackgroundImage from "gatsby-background-image"
 
 const PostList = () => {
   return (
@@ -28,12 +29,27 @@ const PostList = () => {
               ({
                 node: { id, slug, title, descripcionCorta, imagenPrincipal },
               }) => (
-                <Flex flexDirection="column" key={id}>
-                  <Image width="100%" src={imagenPrincipal.fixed.src} />
-                  <Heading fontSize="1.5rem">{title}</Heading>
-                  <Text>{descripcionCorta}</Text>
-                  <Button>Leer más</Button>
-                </Flex>
+                <BackgroundImage key={id} fluid={imagenPrincipal.fluid}>
+                  <Flex
+                    color="white"
+                    flexDirection="column"
+                    key={id}
+                    padding="2rem"
+                  >
+                    <Heading mt="200px" color="orange.500" fontSize="1.5rem">
+                      {title}
+                    </Heading>
+                    <Text>{descripcionCorta}</Text>
+                    <Button
+                      color="gray.500"
+                      width="fit-content"
+                      mt="2rem"
+                      variant="link"
+                    >
+                      Leer más
+                    </Button>
+                  </Flex>
+                </BackgroundImage>
               )
             )
           }}
@@ -54,11 +70,9 @@ export const postQuery = graphql`
           id
           descripcionCorta
           imagenPrincipal {
-            fixed(width: 1600) {
-              width
-              height
+            fluid(maxWidth: 768) {
               src
-              srcSet
+              sizes
             }
           }
         }
