@@ -1,18 +1,5 @@
 import React from "react"
-import {
-  Flex,
-  Heading,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  Input,
-  Textarea,
-  Text,
-  Button,
-  Image,
-  Box,
-  Grid,
-} from "@chakra-ui/react"
+import { Flex, Box, Grid } from "@chakra-ui/react"
 import DondeEstamos from "./dondeEstamos"
 import ContactForm from "./contactForm"
 

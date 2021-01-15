@@ -1,6 +1,6 @@
 import React from "react"
 import { Flex, Button, Heading, Text, Grid } from "@chakra-ui/react"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 
 const PostList = () => {
@@ -44,14 +44,16 @@ const PostList = () => {
                       {title}
                     </Heading>
                     <Text>{descripcionCorta}</Text>
-                    <Button
-                      color="gray.500"
-                      width="fit-content"
-                      mt="2rem"
-                      variant="link"
-                    >
-                      Leer más
-                    </Button>
+                    <Link to={slug}>
+                      <Button
+                        color="gray.500"
+                        width="fit-content"
+                        mt="2rem"
+                        variant="link"
+                      >
+                        Leer más
+                      </Button>
+                    </Link>
                   </Flex>
                 </BackgroundImage>
               )
