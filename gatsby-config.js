@@ -19,13 +19,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
       },
@@ -92,7 +85,7 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: 'y155stxxiia8',
+        spaceId: "y155stxxiia8",
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },

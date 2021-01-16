@@ -1,5 +1,4 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -40,7 +39,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (posts.length > 0) {
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].node.id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].node.id
+      const nextPostId =
+        index === posts.length - 1 ? null : posts[index + 1].node.id
 
       createPage({
         path: post.node.slug,
