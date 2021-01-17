@@ -1,8 +1,8 @@
 import React from "react"
-import { Link, graphql, Img } from "gatsby"
+import { Link, graphql } from "gatsby"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
+import { Flex, Image, Heading, Text } from "@chakra-ui/react"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -19,25 +19,23 @@ const BlogPostTemplate = ({ data, location }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
-          <h1 itemProp="headline">{post.title}</h1>
-          <p>{post.createdAt}</p>
-        </header>
-        {/* <Img
-          className="featured"
-          fluid={post.imagenPrincipal.fluid}
-          alt={post.title}
-        /> */}
-        <section
-          itemProp="articleBody"
-        >{
-          renderRichText(post.contenido)
-        }
-        </section>
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
+        <Flex flexDirection="column" width="100wh">
+          <Image
+            objectFit="cover"
+            maxH="20rem"
+            src={post.imagenPrincipal.resolutions.src}
+          />
+          <Flex
+            bg="whiteAlpha.900"
+            flexDirection="column"
+            p={{ base: "1rem", md: "2rem 3rem" }}
+          >
+            <Heading mb="1.5rem">{post.title}</Heading>
+            <Text textAlign="justify" mb="2rem">
+              {renderRichText(post.contenido)}
+            </Text>
+          </Flex>
+        </Flex>
       </article>
       <nav className="blog-post-nav">
         <ul
@@ -88,11 +86,14 @@ export const pageQuery = graphql`
       descripcionCorta
       createdAt(formatString: "Do MMMM, YYYY")
       contenido {
-      raw
-    }
+        raw
+      }
       imagenPrincipal {
-        fluid(maxWidth: 750) {
-          ...GatsbyContentfulFluid
+        resolutions(width: 2600) {
+          width
+          height
+          src
+          srcSet
         }
       }
     }

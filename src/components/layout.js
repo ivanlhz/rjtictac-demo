@@ -1,35 +1,27 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Text, Flex } from "@chakra-ui/react"
+import NavMenu from "./navMenu"
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
-  let header
-
-  if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    )
+const Layout = ({ children }) => {
+  const contactRef = React.useRef(null)
+  function scrollTo(myRef) {
+    myRef.current.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
+    <Flex minW="100wh" flexDirection="column">
+      <NavMenu
+        onContactClick={() => {}}
+        onBlogClick={() => scrollTo(contactRef)}
+      />
       <main>{children}</main>
+      <div ref={contactRef} />
       <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <Text p={{ base: "1rem", md: "1rem 3rem" }} fontStyle="italic">
+          © {new Date().getFullYear()}, Relojería Joyería TIC - TAC
+        </Text>
       </footer>
-    </div>
+    </Flex>
   )
 }
 
