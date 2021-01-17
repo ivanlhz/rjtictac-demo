@@ -45,16 +45,6 @@
     "eslint": "^7.16.0",
     "prettier": "2.1.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
-  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
