@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "rjtictac-website",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Página web oficila de relojeria-joyeria tic tac Tenerife",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Iván López Hdez <ivanlhz@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
