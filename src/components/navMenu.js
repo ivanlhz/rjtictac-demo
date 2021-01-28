@@ -1,34 +1,27 @@
 import React from "react"
-import { Flex, Text } from "@chakra-ui/react"
-import { Link } from "gatsby"
+import { Flex, Text, chakra } from "@chakra-ui/react"
+import NavLink from './navLink'
 
 const NavMenu = ({ onContactClick, onBlogClick }) => {
   return (
     <Flex
-      display="flex"
       flexDirection="row"
-      alignItems="flex-start"
-      justifyContent="flex-end"
-      textAlign="center"
+      justifyContent="space-between"
+      alignItems="center"
       color="blackAlpha.500"
-      pl="1rem"
-      pr="1rem"
-      width="100%"
-      heigth="4.5rem"
+      px={5}
+      py={4}
+      w="100%"
       position="fixed"
     >
-      <Flex alignItems="stretch" p="1rem">
-        <Link to="/">
-          <Text mr="1rem" color="gray.300" _hover={{ color: "orange.300" }}>
-            HOME
-          </Text>
-        </Link>
-        <Text mr="1rem" color="gray.300" _hover={{ color: "orange.300" }}>
+      <Flex alignItems="stretch" ml="auto">
+        <NavLink to="/">HOME</NavLink>
+        <NavLink>
           <button onClick={onBlogClick}>ARTÍCULOS</button>
-        </Text>
-        <Text color="gray.300" _hover={{ color: "orange.300" }}>
+        </NavLink>
+        <NavLink>
           <button onClick={onContactClick}>CONTACTO</button>
-        </Text>
+        </NavLink>
       </Flex>
     </Flex>
   )
