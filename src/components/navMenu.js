@@ -60,8 +60,22 @@ const NavMenu = ({ onContactClick, onBlogClick, ...props }) => {
         <NavLink display={{ base: "none", md: "block" }} to="/">
           HOME
         </NavLink>
-        <NavButton onClick={onBlogClick}>ARTÍCULOS</NavButton>
-        <NavButton onClick={onContactClick}>CONTACTO</NavButton>
+        <NavButton
+          onClick={() => {
+            setShow(false)
+            onBlogClick()
+          }}
+        >
+          ARTÍCULOS
+        </NavButton>
+        <NavButton
+          onClick={() => {
+            setShow(false)
+            onContactClick()
+          }}
+        >
+          CONTACTO
+        </NavButton>
       </Box>
     </Flex>
   )
