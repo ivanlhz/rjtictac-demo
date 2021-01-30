@@ -49,10 +49,6 @@ const App = () => {
           m={0}
           p="0 2rem"
         >
-          <NavMenu
-            onContactClick={() => scrollTo(contactRef)}
-            onBlogClick={() => scrollTo(postsRef)}
-          />
           <Box
             display="flex"
             flexDirection="column"
@@ -82,9 +78,12 @@ const App = () => {
       <PostList />
       <div ref={contactRef} />
       <PageFooter />
+      <NavMenu
+        onContactClick={() => scrollTo(contactRef)}
+        onBlogClick={() => scrollTo(postsRef)}
+      />
     </>
   )
 }
 
 export default App
-
