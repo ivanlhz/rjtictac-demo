@@ -2,6 +2,7 @@ import React from "react"
 import { Flex, Box, Heading } from "@chakra-ui/react"
 import { Link } from "gatsby"
 import NavLink from "./navLink"
+import NavButton from "./navButton"
 
 const NavMenu = ({ onContactClick, onBlogClick, ...props }) => {
   const [show, setShow] = React.useState(false)
@@ -15,7 +16,7 @@ const NavMenu = ({ onContactClick, onBlogClick, ...props }) => {
       color="white"
       w="full"
       position="fixed"
-      bg={{ base: "gray.800", md: "transparent" }}
+      bg={{ base: "gray.900", md: "transparent" }}
       boxShadow={{ base: "0 10px 13px -7px #000", md: "none" }}
       top="0"
       {...props}
@@ -48,18 +49,19 @@ const NavMenu = ({ onContactClick, onBlogClick, ...props }) => {
       </Box>
 
       <Box
-        display={{ sm: show ? "flex" : "none", md: "flex" }}
-        width={{ sm: "full", md: "auto" }}
+        display={{ base: show ? "flex" : "none", md: "flex" }}
+        width={{ base: "full", md: "auto" }}
         alignItems="center"
         flexGrow={1}
         ml="auto"
+        bg={{ base: "gray.800", md: "transparent" }}
         flexDirection={{ base: "column", md: "row" }}
       >
         <NavLink display={{ base: "none", md: "block" }} to="/">
           HOME
         </NavLink>
-        <NavLink onClick={onBlogClick}>ARTÍCULOS</NavLink>
-        <NavLink onClick={onContactClick}>CONTACTO</NavLink>
+        <NavButton onClick={onBlogClick}>ARTÍCULOS</NavButton>
+        <NavButton onClick={onContactClick}>CONTACTO</NavButton>
       </Box>
     </Flex>
   )
