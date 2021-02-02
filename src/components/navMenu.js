@@ -53,7 +53,7 @@ const NavMenu = ({ invertStyle, onContactClick, onBlogClick, ...props }) => {
         alignItems="center"
         bg={{ base: "gray.800", md: "transparent" }}
         flexDirection={{ base: "column", md: "row" }}
-        p={["none", "1rem 2rem"]}
+        p={{ base: "none", md: "1rem 2rem" }}
       >
         <NavLink display={{ base: "none", md: "block" }} to="/">
           HOME
