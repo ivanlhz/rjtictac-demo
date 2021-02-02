@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Flex, Text, Box } from "@chakra-ui/react"
 import NavMenu from "../components/navMenu"
 import PageFooter from "../components/pageFooter"
@@ -10,7 +10,7 @@ import BackgroundImage from "gatsby-background-image"
 const App = () => {
   const contactRef = React.useRef(null)
   const postsRef = React.useRef(null)
-  const [invertNavMenuStyle] = React.useState(false)
+  const [invertNavMenuStyle, setInvertNavMenuStyle] = React.useState(false)
 
   const images = useStaticQuery(
     graphql`
@@ -33,8 +33,20 @@ const App = () => {
     `
   )
 
-  function scrollTo(myRef) {
+  const sectionPostsObserver = new IntersectionObserver(
+    entries => {
+      setInvertNavMenuStyle(!entries[0].isIntersecting)
+    },
+    { rootMargin: "-72px 0px 0px 0px" }
+  )
+
+  useEffect(() => {
+    sectionPostsObserver.observe(postsRef.current)
+  }, [])
+
+  function scrollTo(myRef, callback = () => null) {
     myRef.current.scrollIntoView({ behavior: "smooth" })
+    if (callback) callback()
   }
 
   return (
@@ -42,7 +54,9 @@ const App = () => {
       <NavMenu
         invertStyle={invertNavMenuStyle}
         onContactClick={() => scrollTo(contactRef)}
-        onBlogClick={() => scrollTo(postsRef)}
+        onBlogClick={() =>
+          scrollTo(postsRef, () => setInvertNavMenuStyle(true))
+        }
       />
       <BackgroundImage
         fluid={images.desktop.childImageSharp.fluid}

@@ -16,6 +16,8 @@ const NavMenu = ({ invertStyle, onContactClick, onBlogClick, ...props }) => {
       top="0"
       zIndex="1"
       marginTop="-72px"
+      transition="background-color 0.5s ease"
+      flexDir={{ base: "column", md: "row" }}
       bg={{ base: "gray.900", md: invertStyle ? "gray.900" : "transparent" }}
       boxShadow={{
         base: "0 10px 13px -7px #000",
@@ -26,6 +28,7 @@ const NavMenu = ({ invertStyle, onContactClick, onBlogClick, ...props }) => {
       <Flex
         display={{ base: "inherit", md: "none" }}
         p="1.5rem"
+        w="full"
         justifyContent="space-between"
         alignItems="center"
       >
