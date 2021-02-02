@@ -8,8 +8,9 @@ import Img from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 
 const App = () => {
-  const contactRef = React.useRef(null)
-  const postsRef = React.useRef(null)
+  const contactRef = React.useRef()
+  const postsRef = React.useRef()
+  const sectionPostsObserver = React.useRef()
   const [invertNavMenuStyle, setInvertNavMenuStyle] = React.useState(false)
 
   const images = useStaticQuery(
@@ -33,15 +34,15 @@ const App = () => {
     `
   )
 
-  const sectionPostsObserver = new IntersectionObserver(
-    entries => {
-      setInvertNavMenuStyle(!entries[0].isIntersecting)
-    },
-    { rootMargin: "-72px 0px 0px 0px" }
-  )
-
   useEffect(() => {
-    sectionPostsObserver.observe(postsRef.current)
+    sectionPostsObserver.current = new IntersectionObserver(
+      entries => {
+        setInvertNavMenuStyle(!entries[0].isIntersecting)
+      },
+      { rootMargin: "-72px 0px 0px 0px" }
+    )
+
+    sectionPostsObserver.current.observe(postsRef.current)
   }, [])
 
   function scrollTo(myRef, callback = () => null) {
