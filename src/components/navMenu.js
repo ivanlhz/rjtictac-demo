@@ -4,63 +4,62 @@ import { Link } from "gatsby"
 import NavLink from "./navLink"
 import NavButton from "./navButton"
 
-const NavMenu = ({ onContactClick, onBlogClick, ...props }) => {
+const NavMenu = ({ invertStyle, onContactClick, onBlogClick, ...props }) => {
   const [show, setShow] = React.useState(false)
   return (
     <Flex
       as="nav"
-      align="center"
       justify="space-between"
-      wrap="wrap"
-      bg="none"
       color="white"
       w="full"
-      position="fixed"
-      bg={{ base: "gray.900", md: "transparent" }}
-      boxShadow={{ base: "0 10px 13px -7px #000", md: "none" }}
+      position="sticky"
       top="0"
+      zIndex="1"
+      marginTop="-72px"
+      bg={{ base: "gray.900", md: invertStyle ? "gray.900" : "transparent" }}
+      boxShadow={{
+        base: "0 10px 13px -7px #000",
+        md: invertStyle ? "0 10px 13px -7px #000" : "none",
+      }}
       {...props}
     >
       <Flex
-        align="center"
-        padding="1.5rem"
-        display={{ base: "block", md: "none" }}
+        display={{ base: "inherit", md: "none" }}
+        p="1.5rem"
+        justifyContent="space-between"
+        alignItems="center"
       >
-        <Heading as="h1" color="white" size="lg" letterSpacing={"-.1rem"}>
-          <Link to="/">RJ Tic-Tac</Link>
-        </Heading>
+        <Box align="center">
+          <Heading as="h1" color="white" size="lg">
+            <Link to="/">RJ Tic-Tac</Link>
+          </Heading>
+        </Box>
+
+        <Box onClick={() => setShow(!show)} cursor="pointer">
+          <svg
+            fill="white"
+            width="12px"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </Box>
       </Flex>
-
-      <Box
-        display={{ base: "block", md: "none" }}
-        onClick={() => setShow(!show)}
-        cursor="pointer"
-        padding="1.5rem"
-      >
-        <svg
-          fill="white"
-          width="12px"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-        </svg>
-      </Box>
-
       <Box
         display={{ base: show ? "flex" : "none", md: "flex" }}
-        width={{ base: "full", md: "auto" }}
+        width="full"
         alignItems="center"
-        flexGrow={1}
-        ml="auto"
         bg={{ base: "gray.800", md: "transparent" }}
         flexDirection={{ base: "column", md: "row" }}
+        p={["none", "1rem 2rem"]}
       >
         <NavLink display={{ base: "none", md: "block" }} to="/">
           HOME
         </NavLink>
         <NavButton
+          ml={["none", "auto"]}
           onClick={() => {
             setShow(false)
             onBlogClick()

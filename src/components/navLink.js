@@ -6,8 +6,6 @@ const CLink = chakra(Link)
 
 const NavLink = ({ children, onClick, ...props }) => (
   <CLink
-    py={{ base: 3, md: 0 }}
-    px={2}
     color="white"
     w={{ base: "full", md: "fit-content" }}
     cursor="pointer"

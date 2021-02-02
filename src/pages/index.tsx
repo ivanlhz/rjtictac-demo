@@ -10,6 +10,8 @@ import BackgroundImage from "gatsby-background-image"
 const App = () => {
   const contactRef = React.useRef(null)
   const postsRef = React.useRef(null)
+  const [invertNavMenuStyle] = React.useState(false)
+
   const images = useStaticQuery(
     graphql`
       query {
@@ -30,12 +32,18 @@ const App = () => {
       }
     `
   )
+
   function scrollTo(myRef) {
     myRef.current.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
     <>
+      <NavMenu
+        invertStyle={invertNavMenuStyle}
+        onContactClick={() => scrollTo(contactRef)}
+        onBlogClick={() => scrollTo(postsRef)}
+      />
       <BackgroundImage
         fluid={images.desktop.childImageSharp.fluid}
         backgroundColor={`#333`}
@@ -78,10 +86,6 @@ const App = () => {
       <PostList />
       <div ref={contactRef} />
       <PageFooter />
-      <NavMenu
-        onContactClick={() => scrollTo(contactRef)}
-        onBlogClick={() => scrollTo(postsRef)}
-      />
     </>
   )
 }
