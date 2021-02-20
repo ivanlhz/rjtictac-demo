@@ -9,10 +9,16 @@ const NavMenu = ({
   onContactClick,
   onBlogClick,
   onTecnicalServiceClick,
+  active = "",
   ...props
 }) => {
   const [show, setShow] = React.useState(false)
   const [activeLink, setActiveLink] = React.useState()
+  console.log("NavMenu Active ??", activeLink)
+
+  React.useEffect(() => {
+    setActiveLink(active)
+  }, [active])
 
   return (
     <Flex

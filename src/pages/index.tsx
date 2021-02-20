@@ -12,7 +12,12 @@ const App = () => {
   const contactRef = React.useRef()
   const postsRef = React.useRef()
   const tecnicalServiceRef = React.useRef()
-  const sectionPostsObserver = React.useRef()
+  const heroRef = React.useRef()
+  const heroObserver = React.useRef() //TODO: Refactor
+  const sectionPostsObserver = React.useRef() //TODO: Refactor
+  const tecnicalServiceObserver = React.useRef() //TODO: Refactor
+  const contactObserver = React.useRef() //TODO: Refactor
+  const [activeLink, setActiveLink] = React.useState("") // TODO: Refactor
   const [invertNavMenuStyle, setInvertNavMenuStyle] = React.useState(false)
 
   const images = useStaticQuery(
@@ -37,16 +42,67 @@ const App = () => {
   )
 
   useEffect(() => {
+    heroObserver.current = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting) {
+          setActiveLink("")
+          setInvertNavMenuStyle(false)
+        }
+      },
+      { root: null, rootMargin: "0px", threshold: 0.7 }
+    )
+
+    heroObserver.current.observe(heroRef.current)
+  }, [])
+
+  useEffect(() => {
+    // when the postSection enter into the view
     sectionPostsObserver.current = new IntersectionObserver(
       entries => {
-        setInvertNavMenuStyle(!entries[0].isIntersecting)
+        if (entries[0].isIntersecting) {
+          setActiveLink("article")
+          setInvertNavMenuStyle(true)
+        } else if (activeLink === "article") {
+          setActiveLink("")
+        }
       },
-      { rootMargin: "-72px 0px 0px 0px" }
+      { root: null, rootMargin: "0px", threshold: 0.7 }
     )
 
     sectionPostsObserver.current.observe(postsRef.current)
   }, [])
 
+  useEffect(() => {
+    tecnicalServiceObserver.current = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting) {
+          setActiveLink("tecnicalService")
+          setInvertNavMenuStyle(true)
+        } else if (activeLink === "tecnicalService") {
+          setActiveLink("")
+        }
+      },
+      { root: null, rootMargin: "0px", threshold: 0.7 }
+    )
+
+    tecnicalServiceObserver.current.observe(tecnicalServiceRef.current)
+  }, [])
+
+  useEffect(() => {
+    contactObserver.current = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting) {
+          setActiveLink("contact")
+          setInvertNavMenuStyle(true)
+        }
+      },
+      { root: null, rootMargin: "0px", threshold: 0.7 }
+    )
+
+    contactObserver.current.observe(contactRef.current)
+  }, [])
+
+  // TODO: refactor
   function scrollTo(myRef, callback = () => null) {
     myRef.current.scrollIntoView({ behavior: "smooth" })
     if (callback) callback()
@@ -56,10 +112,9 @@ const App = () => {
     <>
       <NavMenu
         invertStyle={invertNavMenuStyle}
+        active={activeLink}
         onContactClick={() => scrollTo(contactRef)}
-        onBlogClick={() =>
-          scrollTo(postsRef, () => setInvertNavMenuStyle(true))
-        }
+        onBlogClick={() => scrollTo(postsRef)}
         onTecnicalServiceClick={() => scrollTo(tecnicalServiceRef)}
       />
       <BackgroundImage
@@ -67,6 +122,7 @@ const App = () => {
         backgroundColor={`#333`}
       >
         <Flex
+          ref={heroRef}
           justifyContent="flex-start"
           alignItems="center"
           backgroundColor="blackAlpha.900"
@@ -100,14 +156,15 @@ const App = () => {
           </Box>
         </Flex>
       </BackgroundImage>
-      <div ref={postsRef} />
-      <PostList />
-      <Box ref={tecnicalServiceRef} />
-      <Flex minH="100vh">
+      <Box ref={postsRef}>
+        <PostList />
+      </Box>
+      <Flex ref={tecnicalServiceRef} minH="100vh">
         <ServicioTecnico />
       </Flex>
-      <div ref={contactRef} />
-      <PageFooter />
+      <Box ref={contactRef}>
+        <PageFooter />
+      </Box>
     </>
   )
 }
