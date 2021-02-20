@@ -6,10 +6,12 @@ import PostList from "../components/postList"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
+import ServicioTecnico from "../components/servicioTecnico"
 
 const App = () => {
   const contactRef = React.useRef()
   const postsRef = React.useRef()
+  const tecnicalServiceRef = React.useRef()
   const sectionPostsObserver = React.useRef()
   const [invertNavMenuStyle, setInvertNavMenuStyle] = React.useState(false)
 
@@ -58,6 +60,7 @@ const App = () => {
         onBlogClick={() =>
           scrollTo(postsRef, () => setInvertNavMenuStyle(true))
         }
+        onTecnicalServiceClick={() => scrollTo(tecnicalServiceRef)}
       />
       <BackgroundImage
         fluid={images.desktop.childImageSharp.fluid}
@@ -99,6 +102,10 @@ const App = () => {
       </BackgroundImage>
       <div ref={postsRef} />
       <PostList />
+      <Box ref={tecnicalServiceRef} />
+      <Flex minH="100vh">
+        <ServicioTecnico />
+      </Flex>
       <div ref={contactRef} />
       <PageFooter />
     </>

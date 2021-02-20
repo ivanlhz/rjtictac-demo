@@ -4,8 +4,16 @@ import { Link } from "gatsby"
 import NavLink from "./navLink"
 import NavButton from "./navButton"
 
-const NavMenu = ({ invertStyle, onContactClick, onBlogClick, ...props }) => {
+const NavMenu = ({
+  invertStyle,
+  onContactClick,
+  onBlogClick,
+  onTecnicalServiceClick,
+  ...props
+}) => {
   const [show, setShow] = React.useState(false)
+  const [activeLink, setActiveLink] = React.useState()
+
   return (
     <Flex
       as="nav"
@@ -58,25 +66,45 @@ const NavMenu = ({ invertStyle, onContactClick, onBlogClick, ...props }) => {
         flexDirection={{ base: "column", md: "row" }}
         p={{ base: "none", md: "1rem 2rem" }}
       >
-        <NavLink display={{ base: "none", md: "block" }} to="/">
-          HOME
+        <NavLink
+          onClick={() => setActiveLink("")}
+          display={{ base: "none", md: "block" }}
+          to="/"
+        >
+          Home
         </NavLink>
         <NavButton
+          active={activeLink === "article"}
           ml={["none", "auto"]}
+          mr={[0, 2]}
           onClick={() => {
             setShow(false)
+            setActiveLink("article")
             onBlogClick()
           }}
         >
-          ARTÍCULOS
+          Artículos
         </NavButton>
         <NavButton
+          mr={[0, 2]}
+          active={activeLink === "tecnicalService"}
           onClick={() => {
             setShow(false)
+            setActiveLink("tecnicalService")
+            onTecnicalServiceClick()
+          }}
+        >
+          Servicio Técnico
+        </NavButton>
+        <NavButton
+          active={activeLink === "contact"}
+          onClick={() => {
+            setShow(false)
+            setActiveLink("contact")
             onContactClick()
           }}
         >
-          CONTACTO
+          Contacto
         </NavButton>
       </Box>
     </Flex>
