@@ -7,6 +7,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import ServicioTecnico from "../components/servicioTecnico"
+import Logo from "../images/logoV.svg"
 
 const App = () => {
   const contactRef = React.useRef()
@@ -27,13 +28,6 @@ const App = () => {
           childImageSharp {
             fluid(quality: 90, maxWidth: 1920) {
               ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-        logo: file(relativePath: { eq: "logo3.png" }) {
-          childImageSharp {
-            fluid(quality: 100, maxWidth: 300) {
-              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -139,10 +133,7 @@ const App = () => {
             height="100%"
             maxW="700px"
           >
-            <Img
-              fluid={images.logo.childImageSharp.fluid}
-              alt="rjtictac logo"
-            />
+            <Logo />
             <Text
               color="whiteAlpha.900"
               fontSize="2xl"
