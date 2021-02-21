@@ -3,6 +3,8 @@ import { Flex, Box, Heading } from "@chakra-ui/react"
 import { Link } from "gatsby"
 import NavLink from "./navLink"
 import NavButton from "./navButton"
+import Logo from "../images/rjtictac_isologo.svg"
+import GrayLogo from "../images/rjtictac_isologo_gray.svg"
 
 const NavMenu = ({
   invertStyle,
@@ -34,8 +36,8 @@ const NavMenu = ({
       flexDir={{ base: "column", md: "row" }}
       bg={{ base: "gray.900", md: invertStyle ? "gray.900" : "transparent" }}
       boxShadow={{
-        base: "0 10px 13px -7px #000",
-        md: invertStyle ? "0 10px 13px -7px #000" : "none",
+        base: "0 10px 13px -10px #000",
+        md: invertStyle ? "0 10px 13px -10px #000" : "none",
       }}
       {...props}
     >
@@ -77,7 +79,7 @@ const NavMenu = ({
           display={{ base: "none", md: "block" }}
           to="/"
         >
-          Home
+          {invertStyle && <Logo height="50px" />}
         </NavLink>
         <NavButton
           active={activeLink === "article"}
